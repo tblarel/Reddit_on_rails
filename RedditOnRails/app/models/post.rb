@@ -14,8 +14,7 @@
 class Post < ApplicationRecord
 
     validates :title, :user_id, presence: true
-
-        
+ 
     has_many :comments,
         foreign_key: :post_id,
         class_name: :Comment
@@ -31,5 +30,8 @@ class Post < ApplicationRecord
     belongs_to :user,
         foreign_key: :user_id,
         class_name: :User
-
+    
+    def top_level_comments
+        @top_comments = comments.where(parent_comment_id: nil)
+    end
 end

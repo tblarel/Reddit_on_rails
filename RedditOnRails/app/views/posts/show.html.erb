@@ -14,10 +14,16 @@
 <a href="<%=new_post_comment_url(@post)%>">Add a Comment</a>
 
 <ul>
-<% @post.comments.where(parent_comment_id: nil).each do |comment| %>
+<% @post.top_level_comments.each do |comment| %>
     <li>
         <a href="<%= comment_url(comment) %>"><%= comment.content %></a> 
         <p>- <%= comment.user.username%></p>
+
+        <ul>
+            <% if comment.child_comments %>
+                <%= render "comment", collection: comment.child_comments %>
+            <% end %>
+        </ul>
     </li>
 <% end %>
 </ul>
