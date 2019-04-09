@@ -1,0 +1,23 @@
+<h1> <%= @sub.title %> </h1>
+
+<h2> <%= @sub.description %> </h2>
+
+
+<h3> Moderated By: <%= @sub.moderator.username %> </h3>
+
+<h2> Posts: </h2>
+<ul>
+<% @sub.posts.each do |post|  %>
+    <li><a href="<%= post_url(post)%>"> <%= post.title %> </a></li>
+<% end %>
+</ul>
+<br>
+<br>
+<form action="<%= new_post_url %>" method="GET">
+    <input type="hidden" name="authenticity_token"value="<%=form_authenticity_token%>">
+    <input type="submit" value="Make a Post">
+
+</form>
+<br>
+<br>
+<a href="<%= subs_url %>">Back to all SubReddits</a>
