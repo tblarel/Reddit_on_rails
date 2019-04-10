@@ -1,11 +1,11 @@
-<% collection.each do |sub_comment| %>
-    <li> 
-        <a href="<%= comment_url(sub_comment) %>"><%= sub_comment.content %></a> 
-        <p>-<%= sub_comment.user.username%></p>
-        <ul>
-            <% if sub_comment.child_comments %>
-                <%= render "comment", collection: sub_comment.child_comments %>
-            <% end %>
-        </ul>
-    </li>
-<% end %>
+<li>
+    <a href="<%= comment_url(collection) %>"><%= collection.content %></a> 
+    <p>- <%= collection.user.username%></p>
+    <ul>
+    <% @all_comments.each do |sub_comment| %>
+        <% if sub_comment.parent_comment_id == collection.id %>
+            <%= render "comment", collection: sub_comment  %>
+        <% end %>
+    <% end %>
+    </ul>
+</li>

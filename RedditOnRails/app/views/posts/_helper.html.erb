@@ -1,0 +1,13 @@
+<% collection.each do |comment| %>
+    <li> 
+        <a href="<%= comment_url(comment) %>"><%= comment.content %></a> 
+        <p>-<%= comment.user.username%></p>
+        <ul>
+            <% @all_comments.each do |sub_comment| %>
+                <% if sub_comment.parent_comment_id == comment.id %>
+                    <%= render "comment", collection: @all_comments  %>
+                <% end %>
+            <% end %>
+        </ul>
+    </li>
+<% end %>

@@ -1,7 +1,11 @@
 <h1> <%= @comment.content %> </h1>
 <h3> - <%= @comment.user.username %> </h3>
 
-<p> parent_id: <%= @comment.parent_comment_id %> </p>
+<% if @comment.parent_comment_id %>
+    <a>Replying to: <%= @comment.parent_comment.content %> </p>
+<% else %>
+    <p>Replying to: <%= @comment.post.content %> </p>
+<% end%>
 
 <br><br>
 <form action="<%= comments_url%>" method="POST">
@@ -10,11 +14,11 @@
         <input type="hidden" name="comment[post_id]" value="<%=@comment.post_id%>">
         <input type="hidden" name="comment[parent_comment_id]" value="<%=params[:id]%>">
         <label>Content:<br>
-            <textarea name="comment[content]"> </textarea>
+            <textarea name="comment[content]"rows=10 cols=60> </textarea>
         </label>
         <br>
     
-        <input type="submit" value="Add Post">
+        <input type="submit" value="Add Comment">
         
 </form>
 

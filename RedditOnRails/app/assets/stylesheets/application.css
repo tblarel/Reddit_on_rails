@@ -14,10 +14,65 @@
  *= require_self
  */
 
- /* body {
-     text-align: center;
- }
+body {
+    text-align: center;
+    background-color: lightsalmon;
+    color: midnightblue;
+    font-family: trebuchet MS;
+    margin: 0px;
+}
 
- li {
-     list-style: none;
- } */
+.subs > li{
+    text-align:center;
+    margin-left: 0px;
+}
+
+.subs {
+    margin: 0;
+    padding: 0;
+}
+
+li, ul {
+    text-align:left;
+    list-style: none;
+}
+
+input[type=submit] {
+    padding:5px 15px; 
+    background: honeydew; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: white;
+   
+}
+
+nav > a {
+    margin: 5px;
+}
+
+nav > form {
+    align-self: center;
+    margin: 10px;
+}
+
+nav input[type=submit] {
+    padding:5px 15px; 
+    background: black; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    color: white;
+}
+
+section {
+    margin: 0px 100px;
+}

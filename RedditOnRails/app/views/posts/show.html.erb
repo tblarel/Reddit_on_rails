@@ -5,25 +5,34 @@
 <h3> <%= @post.content %> </h3>
 <h3> <%= @post.url %> </h3>
 
-<ul>
+<ul class="subs">
 <% @post.subs.each do |sub|  %>
     <li><a href="<%= sub_url(sub)%>"> <%= sub.title %> </a></li>
 <% end %>
 </ul>
+<br> <br>
 
-<a href="<%=new_post_comment_url(@post)%>">Add a Comment</a>
+<form action="<%=new_post_comment_url(@post)%>" method="get">
+    <input type="hidden" name="authenticity_token"value="<%=form_authenticity_token%>">
+    <input type="submit" value="Add a Comment">
+</form>
+
+
 
 <ul>
-<% @post.top_level_comments.each do |comment| %>
-    <li>
-        <a href="<%= comment_url(comment) %>"><%= comment.content %></a> 
-        <p>- <%= comment.user.username%></p>
-
-        <ul>
-            <% if comment.child_comments %>
-                <%= render "comment", collection: comment.child_comments %>
-            <% end %>
-        </ul>
-    </li>
+<% @all_comments.each do |comment| %>
+    <% if comment.parent_comment_id.nil? %>
+        <li>
+            <a href="<%= comment_url(comment) %>"><%= comment.content %></a> 
+            <p>- <%= comment.user.username%></p>
+            <ul>
+                <% @all_comments.each do |sub_comment| %>
+                    <% if sub_comment.parent_comment_id == comment.id %>
+                        <%= render "comment", collection: sub_comment  %>
+                    <% end %>
+                <% end %>
+            </ul>
+        </li>
+    <% end %>
 <% end %>
 </ul>
