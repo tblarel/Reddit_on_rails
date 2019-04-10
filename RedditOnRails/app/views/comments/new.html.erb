@@ -4,10 +4,10 @@
     <input type="hidden" name="authenticity_token"value="<%=form_authenticity_token%>">
     <input type="hidden" name="comment[user_id]" value="<%=current_user.id%>">
     <input type="hidden" name="comment[post_id]" value="<%=params[:post_id]%>">
-    <label>Content:<br>
-        <textarea name="comment[content]"> </textarea>
+    <label><br>
+        <textarea class="comment-box" name="comment[content]" rows="5" cols="80"> </textarea>
     </label>
     <br>
 
-    <input type="submit" value="Add Comment">
+    <input  class="create" type="submit" value="Add Comment">
 </form>

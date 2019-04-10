@@ -14,11 +14,11 @@
         <input type="hidden" name="comment[post_id]" value="<%=@comment.post_id%>">
         <input type="hidden" name="comment[parent_comment_id]" value="<%=params[:id]%>">
         <label>Content:<br>
-            <textarea name="comment[content]"rows=10 cols=60> </textarea>
+            <textarea class="comment-box" name="comment[content]" rows="5" cols="80"> </textarea>
         </label>
         <br>
     
-        <input type="submit" value="Add Comment">
+        <input class="create" type="submit" value="Add Comment">
         
 </form>
 

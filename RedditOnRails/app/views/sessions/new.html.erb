@@ -3,10 +3,10 @@
 <form action="<%= session_url%>" method="POST">
     <input type="hidden" name="authenticity_token"value="<%=form_authenticity_token%>">
     <label>Username 
-        <input type="text" name="user[username]">
+        <input class="comment-box" type="text" name="user[username]">
     </label>
     <label>Password 
-        <input type="password" name="user[password]">
+        <input class="comment-box" type="password" name="user[password]">
     </label>
-    <input type="submit" value="Sign In">
+    <input  style="margin-left: 30px" class="create" type="submit" value="Sign In">
 </form>

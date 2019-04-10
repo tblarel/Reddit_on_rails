@@ -7,24 +7,33 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
   </head>
 
   <body>
   <nav>
+    <a id="home" href="<%= subs_url %>"><i class="fas fa-home" ></i></a>
     <% if logged_in? %>
-      <h3>Hi! Logged in as <%= current_user.username %> </h3>
+      <h3>Hi, <%= current_user.username %> </h3>
       <form action="<%=session_url%>" method="post">
         <input type="hidden" name="authenticity_token"value="<%=form_authenticity_token%>">
         <input type="hidden" name="_method"value="delete">
         <input type="submit" value="Sign Out">
       </form>
     <% else %>
-      <a href="<%=new_session_url%>">Log In</a>
-      <a href="<%=new_user_url%>">Sign Up</a>
+      <form action="<%=new_session_url%>" method="get">
+        <input type="hidden" name="authenticity_token"value="<%=form_authenticity_token%>">
+        <input type="submit" value="Log In">
+      </form>
+      <form action="<%=new_user_url%>" method="get">
+        <input type="hidden" name="authenticity_token"value="<%=form_authenticity_token%>">
+        <input type="submit" value="Sign Up">
+      </form>    
     <% end %>
   </nav>
 
-  <section>
+  <section class="back">
     <%= flash[:errors] if flash[:errors] %>
 
     <%= yield %>

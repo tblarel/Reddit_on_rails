@@ -5,7 +5,7 @@
 
 <h3> Moderated By: <%= @sub.moderator.username %> </h3>
 
-<h2> Posts: </h2>
+<h2 class="label"> Posts: </h2>
 <ul class="subs">
 <% @sub.posts.each do |post|  %>
     <li><a href="<%= post_url(post)%>"> <%= post.title %> </a></li>
@@ -15,7 +15,7 @@
 <br>
 <form action="<%= new_post_url %>" method="GET">
     <input type="hidden" name="authenticity_token"value="<%=form_authenticity_token%>">
-    <input type="submit" value="Make a Post">
+    <input class="create" type="submit" value="Make a Post">
 
 </form>
 <br>

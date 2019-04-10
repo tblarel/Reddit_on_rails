@@ -3,11 +3,11 @@
 <form action="<%= subs_url%>" method="POST">
     <input type="hidden" name="authenticity_token"value="<%=form_authenticity_token%>">
     <label>Title 
-        <input type="text" name="sub[title]">
+        <input class="comment-box" type="text" name="sub[title]">
     </label>
     <label>Description 
-        <input type="text" name="sub[description]">
+        <input class="comment-box" type="text" name="sub[description]">
     </label>
 
-    <input type="submit" value="Create Sub">
+    <input class="create" style="margin-left: 30px"type="submit" value="Create Sub">
 </form>
